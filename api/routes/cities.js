@@ -7,9 +7,11 @@ router.get('/', (req, res) => {
     const lng = req.query.lng;
     request('https://api.openweathermap.org/data/2.5/find?lat='+ lat +'&lon='+ lng +'&APPID=062c05ac6bdf37eca9574c43268519b4',
         (error, response, body) =>{
-            if(error){
-                //res.status(404).json();
-                res.send('An error occured');
+            if(lat === undefined || lng === undefined){
+                res.status(404).json({
+                    "code":"NotFoundError",
+                    "message":"not found"
+                });
             }
             else{
                 const parsedBody = JSON.parse(body);
