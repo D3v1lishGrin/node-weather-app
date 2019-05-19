@@ -1,4 +1,4 @@
-FROM node:8.16-jessie
+FROM node:8.16.0-jessie
 
 #Create app directory
 WORKDIR .
